@@ -23,7 +23,7 @@ class LoadData():
 
         self.csv_to_dict()
 
-        _, self.collection_mdb = con.__connect__()
+        _, self.collection_mdb = con.connect()
         self.collection_mdb.insert_many(self.dict_list, ordered = False)
         print("All the countries data has been Exported to Mongo db server")
 

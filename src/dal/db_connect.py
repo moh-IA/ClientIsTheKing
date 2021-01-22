@@ -12,7 +12,7 @@ class MongoDB(object):
         self.collection_name = collection_name
 
     
-    def __connect__(self):
+    def connect(self):
 
         self.client = MongoClient(f"mongodb+srv://{self.user_name}:{self.password}@cluster0.hdjon.mongodb.net/{self.db_name}?retryWrites=true&w=majority")
         self.db = self.client[self.db_name]
