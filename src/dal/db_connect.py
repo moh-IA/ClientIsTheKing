@@ -26,22 +26,6 @@ class MongoDB():
 
 
 
-# MongoDB authentification
-
-user_name = 'Admin'
-password = 'denied87ZONE8787'
-db_name = 'country_db'
-collections_name = 'country_records'
-
-
-
-# MongoDB connection
-con = MongoDB(user_name, password, db_name, collections_name)
-_, records = con.connect()
-
-records.update_one({"name_country": "Bordeaux"}, {"$set": {"fert_rate": "5.50"}})
-
-
 
 
 
