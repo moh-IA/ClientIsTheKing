@@ -6,6 +6,7 @@ import json
 import random
 
 
+
 # MongoDB authentification
 
 user_name = 'Admin'
@@ -38,12 +39,13 @@ def loading_data():
 def find_country(name_country):
     country = records.find_one({'name_country': name_country})
     del country['_id']
-    return jsonify(country)
+
+    return country
 
 # Add country
 
 
-@app.route('/add_country/<name_country>')
+@app.route('/add_country/<name_country>/')
 def add_country(name_country):
 
     new_country = {
@@ -57,11 +59,25 @@ def add_country(name_country):
         'fert_rate': str(round(random.uniform(1.10, 7), 2)),
         'med_age': str(round(random.uniform(15, 48), 2)),
         'urban_pop': str(round(random.uniform(0, 100), 2)),
-        'world_share': str(round(random.uniform(0, 18.47), 2))
+        'world_share': str(round(random.uniform(0, 18.47), 2)),
+        'date_creat': "",
+        'date_modif': ""
+
     }
 
     records.insert_one(new_country)
     return f"the new country { name_country } has been added successfully"
+
+# Modify density field to check date_modif
+
+
+@app.route('/update_country/<name_country>/<density>')
+def update_country(name_country, density):
+
+    records.update_one({"name_country": name_country},
+                       {"$set": {"density": density}})
+
+    return f"the Density of { name_country } has been modified"
 
 # Return the tranch of density
 

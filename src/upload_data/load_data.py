@@ -1,6 +1,7 @@
 import csv
 from src.dal.db_connect import MongoDB
 
+
 class LoadData():
     """
     docstring

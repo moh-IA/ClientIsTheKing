@@ -1,6 +1,8 @@
 from pymongo import MongoClient
 
-class MongoDB(object):
+
+
+class MongoDB():
     """
     docstring
     """
@@ -23,18 +25,25 @@ class MongoDB(object):
 
 
 
-    
 
-        
+# MongoDB authentification
 
-    
-
-
-
-
+user_name = 'Admin'
+password = 'denied87ZONE8787'
+db_name = 'country_db'
+collections_name = 'country_records'
 
 
 
-# client = MongoClient("mongodb+srv://Admin:denied87ZONE8787@cluster0.hdjon.mongodb.net/country_db?retryWrites=true&w=majority")
-# db = client.get_database('country_db')
-# print(db)
+# MongoDB connection
+con = MongoDB(user_name, password, db_name, collections_name)
+_, records = con.connect()
+
+records.update_one({"name_country": "Bordeaux"}, {"$set": {"fert_rate": "5.50"}})
+
+
+
+
+
+
+
