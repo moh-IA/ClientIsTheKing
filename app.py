@@ -33,7 +33,9 @@ def loading_data():
     ld.insert_csv(con)
 
 # Get country
-
+@app.route('/')
+def index():
+    return "The client is the King"
 
 @app.route('/find_country/<name_country>')
 def find_country(name_country):
@@ -65,7 +67,7 @@ def add_country(name_country):
 
     }
 
-    records.insert_one(new_country)
+    records.insert_one(new_country) 
     return f"the new country { name_country } has been added successfully"
 
 # Modify density field to check date_modif
